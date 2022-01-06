@@ -1,0 +1,51 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:local="clr-namespace:MicroCharts.ViewModel"
+             xmlns:chart="clr-namespace:Syncfusion.SfChart.XForms;assembly=Syncfusion.SfChart.XForms"
+             x:Class="MicroCharts.MainPage">
+
+    <ContentPage.BindingContext>
+        <local:SaleInfoViewModel/>
+    </ContentPage.BindingContext>
+
+    <chart:SfChart>
+
+        <chart:SfChart.Title>
+            <chart:ChartTitle Text="Venda de Carros vs Motos"/>
+        </chart:SfChart.Title>
+
+        <chart:SfChart.Legend>
+            <chart:ChartLegend/>
+        </chart:SfChart.Legend>
+
+
+        <chart:SfChart.PrimaryAxis>
+            <chart:CategoryAxis/>
+        </chart:SfChart.PrimaryAxis>
+
+        <chart:SfChart.SecondaryAxis>
+            <chart:NumericalAxis>
+                <chart:NumericalAxis.LabelStyle>
+                    <chart:ChartAxisLabelStyle LabelFormat="R$###M"/>
+                </chart:NumericalAxis.LabelStyle>
+            </chart:NumericalAxis>
+
+        </chart:SfChart.SecondaryAxis>
+
+
+        <chart:ColumnSeries ItemsSource="{Binding SalesDatas}"
+                            XBindingPath="Year"
+                            YBindingPath="Target"
+                            Color="LightSeaGreen"
+                            Label="Carros"/>
+
+        <chart:ColumnSeries ItemsSource="{Binding SalesDatas}"
+                            XBindingPath="Year"
+                            YBindingPath="Sale"
+                            Color="DarkOliveGreen"
+                            Label="Motos"/>
+
+
+    </chart:SfChart>
+</ContentPage>
